@@ -13,6 +13,7 @@ import testRoutes from "./routes/testRoutes.js";
 import authRoute from "./routes/authRoute.js";
 import errorMiddleware from "./middlewares/errorMiddleware.js";
 import userRoute from "./routes/userRoute.js";
+import jobRoute from "./routes/jobRoute.js";
 
 //dotenv configuration
 env.config();
@@ -31,6 +32,7 @@ app.use(cors());
 app.use("/api/v1/test", testRoutes);
 app.use("/api/v1/auth", authRoute);
 app.use("/api/v1/user", userRoute);
+app.use("/api/v1/job", jobRoute);
 
 //middleware for error handling
 app.use(errorMiddleware);

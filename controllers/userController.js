@@ -3,10 +3,14 @@ import userModel from "../models/userModel.js";
 export const userUpdateController = async (req, res, next) => {
   const { name, email, lastName, location } = req.body;
   if (!name || !email || !lastName || !location) {
-    next("Please provide all the details");
+    return next("Please provide all the details");
   }
-  const user = await userModel.findOne({ _id: req.user.userid });
-  user.name = name;
+
+  // console.log("User ID:", req.user.userId); // Debugging line
+
+  const user = await userModel.findOne({ _id: req.user.userId });
+
+  user.name = req.body.name;
   user.email = email;
   user.lastName = lastName;
   user.location = location;
